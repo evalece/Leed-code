@@ -1,0 +1,73 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+#include <stdio.h>      /* printf */
+#include <math.h>       /* pow */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int in1=0;
+        int in2=0;
+        int k=0;
+        
+     
+        ListNode* solution_ptr= new ListNode(); //this pointer allocates 
+        ListNode* solution = solution_ptr; // points at head of solution
+       
+            
+        while(l1 !=nullptr|| l2!=nullptr){
+            
+            if (k>0){
+            
+            if(solution_ptr->next!=nullptr)
+                solution_ptr=solution_ptr->next; 
+            else{
+                solution_ptr->next=new ListNode();
+               solution_ptr= solution_ptr->next;
+            }
+            }
+        
+            
+            in1=0;
+            in2=0;
+            if(l1!=nullptr){                 
+           in1=l1->val;                 
+            } 
+            if (l2!=nullptr){        
+            in2=l2->val;
+            }
+        //l1, l2 next all initialize to 0 if non-existing, else as stated.
+            
+            if(solution_ptr->val+in1+in2>=10){ //plus one to the next decimal place 
+               
+                solution_ptr->val=solution_ptr->val+in1+in2-10;   
+                solution_ptr->next= new ListNode(1); //add to next decimal place
+                
+            }else{
+                //no greater than 10 case
+                solution_ptr->val= solution_ptr->val+(in1+in2);       
+            }
+ 
+      if(l1!=nullptr){
+          l1=l1->next;}
+          
+         if (l2!=nullptr){
+            
+             l2=l2->next;}
+            
+            k++; //counting iteration
+  
+    }
+          return solution; 
+    }
+   
+
+     
+};
