@@ -1,3 +1,3 @@
-# Leed-code
+# Leet-code
 A coding diary 
 author: evalece
